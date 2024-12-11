@@ -1,0 +1,90 @@
+[
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/llm/generate",
+      "body": {
+        "type": "JSON",
+        "json": {
+          "preferences": ["science fiction", "artificial intelligence", "space exploration"]
+        }
+      }
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "body": "{\"recommendations\": [\"Book: 'Dune' by Frank Herbert\", \"Article: 'The Future of AI in Space Travel'\", \"Movie: 'Interstellar'\"]}"
+    },
+    "times": {
+      "unlimited": true
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/llm/generate",
+      "body": {
+        "type": "JSON",
+        "json": {
+          "preferences": ["fantasy", "magic", "adventure"]
+        }
+      }
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "body": "{\"recommendations\": [\"Book: 'Harry Potter and the Sorcerer's Stone' by J.K. Rowling\", \"Movie: 'The Lord of the Rings' Trilogy\", \"Game: 'The Legend of Zelda'\"]}"
+    },
+    "times": {
+      "unlimited": true
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/llm/generate",
+      "body": {
+        "type": "JSON",
+        "json": {
+          "preferences": []
+        }
+      }
+    },
+    "httpResponse": {
+      "statusCode": 400,
+      "body": "{\"error\": \"Preferences list cannot be empty.\"}"
+    },
+    "times": {
+      "unlimited": true
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/llm/generate"
+    },
+    "httpResponse": {
+      "statusCode": 500,
+      "body": "{\"error\": \"Internal server error.\"}"
+    },
+    "times": {
+      "remainingTimes": 2,
+      "unlimited": false
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/llm/generate"
+    },
+    "httpError": {
+      "dropConnection": true,
+      "delay": {
+        "timeUnit": "SECONDS",
+        "value": 5
+      }
+    },
+    "times": {
+      "remainingTimes": 1,
+      "unlimited": false
+    }
+  }
+]

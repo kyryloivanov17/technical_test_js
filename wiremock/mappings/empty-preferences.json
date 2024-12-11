@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/llm/generate",
+    "bodyPatterns": [
+      {
+        "equalToJson": {
+          "preferences": []
+        }
+      }
+    ]
+  },
+  "response": {
+    "status": 400,
+    "jsonBody": {
+      "error": "Preferences list cannot be empty."
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

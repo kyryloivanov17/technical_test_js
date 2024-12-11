@@ -1,0 +1,27 @@
+{
+  "scenarioName": "ErrorScenario",
+  "requiredScenarioState": "Started",
+  "request": {
+    "method": "POST",
+    "url": "/llm/generate"
+  },
+  "response": {
+    "status": 500,
+    "jsonBody": {
+      "error": "Internal server error."
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  },
+  "postServeActions": {
+    "webhook": {
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "method": "POST",
+      "url": "http://localhost:8080/__admin/scenarios/ErrorScenario",
+      "body": "{\"state\":\"FirstError\"}"
+    }
+  }
+}

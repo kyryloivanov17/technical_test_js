@@ -1,0 +1,24 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/llm/generate",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": "$[?(@.preferences == ['fantasy', 'magic', 'adventure'])]"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "recommendations": [
+        "Book: 'Harry Potter and the Sorcerer's Stone' by J.K. Rowling",
+        "Movie: 'The Lord of the Rings' Trilogy",
+        "Game: 'The Legend of Zelda'"
+      ]
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

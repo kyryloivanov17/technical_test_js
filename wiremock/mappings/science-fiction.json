@@ -1,0 +1,24 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/llm/generate",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": "$[?(@.preferences == ['science fiction', 'artificial intelligence', 'space exploration'])]"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "recommendations": [
+        "Book: 'Dune' by Frank Herbert",
+        "Article: 'The Future of AI in Space Travel'",
+        "Movie: 'Interstellar'"
+      ]
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
