@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    command: "npm run dev"
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - wiremock
+      - db
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/my-database
+
+  wiremock:
+    image: wiremock/wiremock:2.35.0
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./wiremock:/home/wiremock
+      - ./wiremock/mappings:/home/wiremock/mappings
+    command: --verbose
+    
+
+  db:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
