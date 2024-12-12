@@ -1,7 +1,11 @@
 import NodeCache from 'node-cache';
 
 // Create cash with TTL (time-to-live) 1 hour
-const cache = new NodeCache({ stdTTL: 3600 });
+let cache = new NodeCache({ stdTTL: 3600 });
+
+export const setCustomCache = (customCache: NodeCache) => {
+  cache = customCache;
+};
 
 export const getCache = (key: string) => {
   return cache.get(key);
