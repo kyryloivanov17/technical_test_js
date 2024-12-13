@@ -45,6 +45,7 @@ export const generateRecommendations = async (req: Request, res: Response) => {
   }
 
   try {
+    console.log("user====>")
     const user = await UserModel.findById(user_id);
     if (!user) {
       return res.status(404).json({
